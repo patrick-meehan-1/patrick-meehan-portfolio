@@ -47,11 +47,30 @@ function changeColorScheme() {
     document.documentElement.style.setProperty('--earth-brown', selectedScheme.earthBrown);
 }
 
+// Dog images
+const dogImages = ['images/fifi.jpg', 'images/lucy.jpg', 'images/ruby.jpg'];
+let currentDogIndex = -1;
+
+function showNextDog() {
+    currentDogIndex = (currentDogIndex + 1) % dogImages.length;
+    const dogImage = document.getElementById('dogImage');
+    const dogContainer = document.getElementById('dogImageContainer');
+    
+    dogImage.src = dogImages[currentDogIndex];
+    dogContainer.style.display = 'block';
+}
+
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
     // Add event listener to theme button when it's created
     const themeButton = document.getElementById('themeButton');
     if (themeButton) {
         themeButton.addEventListener('click', changeColorScheme);
+    }
+    
+    // Add event listener to surprise button
+    const surpriseButton = document.getElementById('surpriseButton');
+    if (surpriseButton) {
+        surpriseButton.addEventListener('click', showNextDog);
     }
 });
