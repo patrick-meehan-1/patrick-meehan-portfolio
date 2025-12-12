@@ -8,9 +8,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="images/profile-favicon.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Scroll Progress Bar -->
+    <div id="scrollProgress"></div>
+    
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
@@ -42,12 +46,13 @@
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col-md-7">
-                                    <h1 class="display-4">Patrick Meehan</h1>
-                                    <p class="lead">Customer Expericne · DevOps · SAP BTP</p>
+                                    <h1 class="display-4" id="typingName"></h1>
+                                    <p class="lead">Customer Experience · DevOps · SAP BTP</p>
                                     <p>Computer Science student with hands-on experience in cloud, DevOps, and SAP BTP. I enjoy helping organisations streamline workflows, integrate systems, and improve how their technology works together. Skilled in C++, Python, Java, and collaborative problem-solving.</p>
                                     <p><a href="mailto:pjmeehanpj33@gmail.com">pjmeehanpj33@gmail.com</a></p>
                                     <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#contactModal">Get In Touch</button>
                                     <button class="btn btn-outline-light mt-3 ms-2" id="themeButton">🎨 Change Theme</button>
+                                    <button class="btn btn-outline-light mt-3 ms-2" id="darkModeToggle">🌙 Dark Mode</button>
                                 </div>
                                 <div class="col-md-5 text-center">
                                     <img src="images/profile.jpg" alt="Patrick Meehan" class="rounded" width="250" height="250">
@@ -67,7 +72,7 @@
                 <div class="col-lg-8">
                     <h2>Education</h2>
                     <div class="mb-4">
-                        <p class="text-muted"><img src="images/technological-university-dublin.webp" alt="TUD" class="edu-logo"> Technological University Dublin - BSc Computing with Software Development - Graduation 2026 </p>
+                        <p class=""><img src="images/technological-university-dublin.webp" alt="TUD" class="edu-logo"> Technological University Dublin - BSc Computing with Software Development - Graduation 2026 </p>
                     </div>
                 </div>
             </div>
@@ -293,6 +298,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="btn btn-success" style="display: none;">↑</button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>

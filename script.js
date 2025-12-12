@@ -60,17 +60,84 @@ function showNextDog() {
     dogContainer.style.display = 'block';
 }
 
+// Back to top button and scroll progress
+window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const backToTop = document.getElementById('backToTop');
+    const scrollProgress = document.getElementById('scrollProgress');
+    
+    // Back to top button
+    if (scrolled > 300) {
+        backToTop.style.display = 'block';
+    } else {
+        backToTop.style.display = 'none';
+    }
+    
+    // Scroll progress bar
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrolled / scrollHeight) * 100;
+    scrollProgress.style.width = scrollPercent + '%';
+});
+
+// Typing animation
+function typeWriter(element, text, speed = 100) {
+    let i = 0;
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    type();
+}
+
+// Dark mode toggle
+let isDarkMode = false;
+
+function toggleDarkMode() {
+    isDarkMode = !isDarkMode;
+    const button = document.getElementById('darkModeToggle');
+    
+    if (isDarkMode) {
+        document.body.classList.add('dark-mode');
+        button.innerHTML = '☀️ Light Mode';
+    } else {
+        document.body.classList.remove('dark-mode');
+        button.innerHTML = '🌙 Dark Mode';
+    }
+}
+
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
+    // Start typing animation
+    const nameElement = document.getElementById('typingName');
+    if (nameElement) {
+        typeWriter(nameElement, 'Patrick Meehan', 150);
+    }
     // Add event listener to theme button when it's created
     const themeButton = document.getElementById('themeButton');
     if (themeButton) {
         themeButton.addEventListener('click', changeColorScheme);
     }
     
+    // Add event listener to dark mode toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+    }
+    
     // Add event listener to surprise button
     const surpriseButton = document.getElementById('surpriseButton');
     if (surpriseButton) {
         surpriseButton.addEventListener('click', showNextDog);
+    }
+    
+    // Add event listener to back to top button
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     }
 });
