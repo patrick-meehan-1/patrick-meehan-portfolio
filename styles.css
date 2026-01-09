@@ -58,6 +58,11 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 25px;
 }
 
+#noBullet {
+    list-style-type: none;
+    padding-left: 0;
+}
+
 #hero .btn-primary:hover {
     background-color: var(--earth-brown);
     transform: translateY(-2px);
